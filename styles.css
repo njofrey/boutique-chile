@@ -220,6 +220,62 @@ img {
 }
 
 /* ==========================================================================
+   Destinos Populares Section
+   ========================================================================== */
+
+.destinos-populares {
+    margin-bottom: var(--space-2xl);
+}
+
+.destinos-populares h2 {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    color: var(--color-primary);
+}
+
+.destinos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-lg);
+}
+
+.destino-card {
+    background: var(--color-background-alt);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    text-align: center;
+    transition: all var(--transition-normal);
+    cursor: pointer;
+    border: 1px solid var(--color-border-light);
+}
+
+.destino-card:hover {
+    background: var(--color-background-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.destino-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-sm);
+}
+
+.destino-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: var(--space-xs);
+    color: var(--color-primary);
+}
+
+.destino-card p {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin: 0;
+}
+
+/* ==========================================================================
    Filters Section
    ========================================================================== */
 
@@ -479,10 +535,44 @@ img {
     border: 1px solid var(--color-border);
 }
 
+/* Hotel Attractions (Lugares fantásticos cerca) */
+.hotel-attractions {
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border-light);
+}
+
+.hotel-attractions h4 {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--space-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.hotel-attractions ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+.hotel-attractions li {
+    background: var(--color-background-dark);
+    color: var(--color-text);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    border: 1px solid var(--color-border);
+}
+
 .hotel-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: var(--space-lg);
 }
 
 .hotel-price {
@@ -592,6 +682,10 @@ img {
         --container-padding: var(--space-xl);
     }
     
+    .destinos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    
     .filters-grid {
         grid-template-columns: 1fr 1fr;
         gap: var(--space-xl);
@@ -621,6 +715,10 @@ img {
 
 /* Desktop: 1024px and up */
 @media (min-width: 64em) {
+    .destinos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
     .filters-grid {
         grid-template-columns: 2fr 1fr 1.5fr;
     }
@@ -658,14 +756,16 @@ img {
 .hotel-card,
 .filter-input,
 .filter-select,
-.amenity-checkbox {
+.amenity-checkbox,
+.destino-card {
     position: relative;
 }
 
 .hotel-card:focus,
 .filter-input:focus,
 .filter-select:focus,
-.amenity-checkbox:focus-within {
+.amenity-checkbox:focus-within,
+.destino-card:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.3);
 }
@@ -682,7 +782,8 @@ img {
 
 @media print {
     .filters,
-    .footer {
+    .footer,
+    .destinos-populares {
         display: none;
     }
     

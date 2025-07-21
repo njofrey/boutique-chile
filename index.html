@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover luxury boutique hotels and lodges across Chile. From Patagonia to Atacama, find unique accommodations in Chile's most stunning destinations.">
-    <meta name="keywords" content="boutique hotels chile, luxury lodges patagonia, atacama desert hotels, chile accommodation, eco hotels">
-    <meta name="author" content="Boutique Chile">
-    <meta property="og:title" content="Boutique Chile - Luxury Hotels & Lodges">
-    <meta property="og:description" content="Discover luxury boutique hotels and lodges across Chile. From Patagonia to Atacama Desert.">
+    <meta name="description" content="Descubre los mejores hoteles boutique en Chile. Lugares fantásticos, reservas fáciles y experiencias únicas.">
+    <meta name="keywords" content="hoteles boutique chile, patagonia lujo, atacama desert hoteles, chiloe lodges">
+    <meta name="author" content="Boutique Me">
+    <meta property="og:title" content="Boutique Me - Hoteles Boutique en Chile">
+    <meta property="og:description" content="Encuentra hoteles boutique auténticos en Chile con lugares fantásticos cerca.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://boutique-chile.com">
-    <title>Boutique Chile - Luxury Hotels & Lodges</title>
+    <meta property="og:url" content="https://boutique-me.vercel.app">
+    <title>Boutique Me - Los Mejores Hoteles Boutique en Chile</title>
     
-    <!-- Preload critical fonts -->
-    <link rel="preload" href="fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/space-grotesk-medium.woff2" as="font" type="font/woff2" crossorigin>
-    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
     
@@ -24,9 +23,9 @@
     {
         "@context": "https://schema.org",
         "@type": "TravelAgency",
-        "name": "Boutique Chile",
-        "description": "Luxury boutique hotels and lodges in Chile",
-        "url": "https://boutique-chile.com",
+        "name": "Boutique Me",
+        "description": "Los mejores hoteles boutique en Chile con lugares fantásticos cerca",
+        "url": "https://boutique-me.vercel.app",
         "sameAs": [],
         "areaServed": {
             "@type": "Country",
@@ -37,52 +36,60 @@
 </head>
 <body>
     <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
     
     <!-- Header -->
     <header class="header" role="banner">
         <div class="container">
             <h1 class="logo">
                 <span class="logo-text">Boutique</span>
-                <span class="logo-accent">Chile</span>
+                <span class="logo-accent">Me</span>
             </h1>
-            <p class="tagline">Discover luxury in Chile's most stunning destinations</p>
+            <p class="tagline">Los mejores hoteles boutique en Chile, con lugares fantásticos cerca</p>
         </div>
     </header>
 
     <!-- Main Content -->
     <main id="main-content" class="main" role="main">
         <div class="container">
+            <!-- Destinos Populares -->
+            <section class="destinos-populares" aria-label="Destinos populares">
+                <h2>Destinos Populares en Chile</h2>
+                <div id="destinos-grid" class="destinos-grid">
+                    <!-- Populados por JS -->
+                </div>
+            </section>
+
             <!-- Filters Section -->
-            <section class="filters" role="search" aria-label="Hotel filters">
-                <h2 class="visually-hidden">Search and Filter Hotels</h2>
+            <section class="filters" role="search" aria-label="Filtros de hoteles">
+                <h2 class="visually-hidden">Buscar y Filtrar Hoteles</h2>
                 
                 <div class="filters-grid">
                     <!-- Search Input -->
                     <div class="filter-group">
-                        <label for="search-input" class="filter-label">Search hotels</label>
+                        <label for="search-input" class="filter-label">Buscar hoteles</label>
                         <input 
                             type="text" 
                             id="search-input" 
                             class="filter-input" 
-                            placeholder="Search by name or location..."
+                            placeholder="Buscar por nombre, ubicación o atracción..."
                             aria-describedby="search-help"
                         >
-                        <div id="search-help" class="visually-hidden">Search hotels by name or location</div>
+                        <div id="search-help" class="visually-hidden">Buscar hoteles por nombre, ubicación o atracción</div>
                     </div>
 
                     <!-- Region Filter -->
                     <div class="filter-group">
-                        <label for="region-select" class="filter-label">Region</label>
+                        <label for="region-select" class="filter-label">Región</label>
                         <select id="region-select" class="filter-select" aria-describedby="region-help">
-                            <option value="">All regions</option>
+                            <option value="">Todas las regiones</option>
                         </select>
-                        <div id="region-help" class="visually-hidden">Filter hotels by region</div>
+                        <div id="region-help" class="visually-hidden">Filtrar hoteles por región</div>
                     </div>
 
                     <!-- Price Range Filter -->
                     <div class="filter-group">
-                        <label for="price-range" class="filter-label">Max nightly rate</label>
+                        <label for="price-range" class="filter-label">Precio máximo por noche</label>
                         <input 
                             type="range" 
                             id="price-range" 
@@ -96,13 +103,13 @@
                             <span>$0</span>
                             <span id="price-value">$2,500</span>
                         </div>
-                        <div id="price-help" class="visually-hidden">Filter hotels by maximum nightly rate</div>
+                        <div id="price-help" class="visually-hidden">Filtrar hoteles por precio máximo por noche</div>
                     </div>
 
                     <!-- Amenities Filter -->
                     <div class="filter-group filter-group--amenities">
                         <fieldset>
-                            <legend class="filter-label">Amenities</legend>
+                            <legend class="filter-label">Amenidades</legend>
                             <div class="amenities-grid" id="amenities-container">
                                 <!-- Amenities will be populated by JavaScript -->
                             </div>
@@ -112,13 +119,13 @@
 
                 <!-- Results Count -->
                 <div class="results-info" aria-live="polite">
-                    <span id="results-count">Loading hotels...</span>
+                    <span id="results-count">Cargando hoteles...</span>
                 </div>
             </section>
 
             <!-- Hotels Grid -->
-            <section class="hotels" aria-label="Hotel results">
-                <h2 class="visually-hidden">Available Hotels</h2>
+            <section class="hotels" aria-label="Resultados de hoteles">
+                <h2 class="visually-hidden">Hoteles Disponibles</h2>
                 <div id="hotels-grid" class="hotels-grid" role="list">
                     <!-- Hotel cards will be populated by JavaScript -->
                 </div>
@@ -126,13 +133,13 @@
                 <!-- Loading State -->
                 <div id="loading" class="loading" aria-hidden="true">
                     <div class="loading-spinner"></div>
-                    <p>Loading luxury hotels...</p>
+                    <p>Cargando hoteles boutique...</p>
                 </div>
 
                 <!-- Empty State -->
                 <div id="empty-state" class="empty-state" aria-hidden="true">
-                    <h3>No hotels found</h3>
-                    <p>Try adjusting your filters to see more results.</p>
+                    <h3>No se encontraron hoteles</h3>
+                    <p>Intenta ajustar tus filtros para ver más resultados.</p>
                 </div>
             </section>
         </div>
@@ -143,17 +150,17 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>About Boutique Chile</h3>
-                    <p>Curating exceptional luxury experiences across Chile's diverse landscapes.</p>
+                    <h3>Sobre Boutique Me</h3>
+                    <p>Seleccionamos los mejores hoteles boutique en Chile para experiencias únicas. Inspirado en boutiquehotel.me.</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>For bookings and inquiries:<br>
-                    <a href="mailto:hello@boutique-chile.com">hello@boutique-chile.com</a></p>
+                    <h3>Contacto</h3>
+                    <p>Para reservas e consultas:<br>
+                    <a href="mailto:info@boutique-me.cl">info@boutique-me.cl</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Boutique Chile. All rights reserved.</p>
+                <p>&copy; 2025 Boutique Me. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>

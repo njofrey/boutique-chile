@@ -4,132 +4,139 @@
     "name": "The Singular Patagonia",
     "region": "Torres del Paine",
     "location": "Puerto Natales, Patagonia",
-    "nightlyRate": 890,
+    "nightlyRate": 950,
     "currency": "USD",
     "rating": 5,
-    "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop&crop=center&q=80",
-    "amenities": ["spa", "restaurant", "wifi", "pool", "fitness", "concierge", "room-service"],
+    "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&h=600&fit=crop&crop=center&q=80",
+    "amenities": ["spa", "restaurant", "wifi", "pool", "fitness", "concierge", "room-service", "excursions"],
     "availableDates": {
-      "start": "2025-01-15",
-      "end": "2025-12-20"
+      "start": "2024-09-01",
+      "end": "2025-04-30"
     },
-    "description": "Luxury eco-hotel overlooking the Última Esperanza fjord with panoramic views of the Patagonian landscape.",
+    "description": "Hotel de lujo ecológico con vistas al fiordo Última Esperanza. Ofrece experiencias personalizadas en el Parque Nacional Torres del Paine, con gastronomía patagónica y spa de clase mundial.",
     "rooms": 57,
     "checkIn": "15:00",
-    "checkOut": "12:00"
+    "checkOut": "12:00",
+    "nearbyAttractions": ["Parque Nacional Torres del Paine", "Glaciar Serrano", "Cueva del Milodón"]
   },
   {
     "id": "huilo-huilo",
     "name": "Huilo Huilo Montaña Mágica Lodge",
     "region": "Los Ríos",
     "location": "Neltume, Valdivian Rainforest",
-    "nightlyRate": 420,
+    "nightlyRate": 450,
     "currency": "USD",
-    "rating": 4,
-    "image": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=600&fit=crop&crop=center&q=80",
-    "amenities": ["restaurant", "wifi", "spa", "hiking", "wildlife-watching", "eco-tours"],
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1540979388789-281154c5d2f4?w=800&h=600&fit=crop&crop=center&q=80",
+    "amenities": ["restaurant", "wifi", "spa", "hiking", "wildlife-watching", "eco-tours", "hot-springs"],
     "availableDates": {
-      "start": "2025-02-01",
-      "end": "2025-11-30"
+      "start": "2024-10-01",
+      "end": "2025-03-31"
     },
-    "description": "Unique cone-shaped lodge in the heart of an ancient Valdivian rainforest biological reserve.",
+    "description": "Lodge en forma de montaña con cascada, inmerso en la Reserva Biológica Huilo Huilo. Ideal para ecoturismo con senderos, termas y observación de fauna endémica.",
     "rooms": 12,
     "checkIn": "14:00",
-    "checkOut": "11:00"
+    "checkOut": "11:00",
+    "nearbyAttractions": ["Reserva Huilo Huilo", "Saltos del Huilo Huilo", "Volcán Mocho-Choshuenco"]
   },
   {
     "id": "vik-chile",
     "name": "Vik Chile",
     "region": "Colchagua Valley",
-    "location": "Millahue, Wine Region",
-    "nightlyRate": 1200,
+    "location": "Millahue, Valle de Colchagua",
+    "nightlyRate": 1300,
     "currency": "USD",
     "rating": 5,
-    "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&h=600&fit=crop&crop=center&q=80",
-    "amenities": ["wine-tasting", "spa", "restaurant", "wifi", "pool", "art-gallery", "fitness"],
+    "image": "https://images.unsplash.com/photo-1515169067868-5387ec356754?w=800&h=600&fit=crop&crop=center&q=80",
+    "amenities": ["wine-tasting", "spa", "restaurant", "wifi", "pool", "art-gallery", "fitness", "vineyard-tours"],
     "availableDates": {
-      "start": "2025-01-10",
-      "end": "2025-12-15"
+      "start": "2024-09-15",
+      "end": "2025-05-15"
     },
-    "description": "Ultra-luxury wine hotel featuring contemporary art and world-class vineyard in the Andes foothills.",
+    "description": "Hotel de vino ultra-lujo con arte contemporáneo y viñedos propios en las faldas de los Andes. Incluye catas premium y experiencias gastronómicas.",
     "rooms": 22,
     "checkIn": "15:00",
-    "checkOut": "12:00"
+    "checkOut": "12:00",
+    "nearbyAttractions": ["Viña Vik Vineyard", "Valle de Colchagua", "Museo Colchagua"]
   },
   {
     "id": "awasi-atacama",
     "name": "Awasi Atacama",
     "region": "Atacama Desert",
     "location": "San Pedro de Atacama",
-    "nightlyRate": 2100,
+    "nightlyRate": 2200,
     "currency": "USD",
     "rating": 5,
-    "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop&crop=center&q=80",
-    "amenities": ["private-guide", "4wd-vehicle", "spa", "restaurant", "wifi", "observatory", "pool"],
+    "image": "https://images.unsplash.com/photo-1543778149-42b3e68f8d4c?w=800&h=600&fit=crop&crop=center&q=80",
+    "amenities": ["private-guide", "4wd-vehicle", "spa", "restaurant", "wifi", "observatory", "pool", "astronomy-tours"],
     "availableDates": {
-      "start": "2025-03-01",
-      "end": "2025-10-31"
+      "start": "2024-08-01",
+      "end": "2025-05-31"
     },
-    "description": "All-inclusive luxury desert lodge with private guide and vehicle for personalized Atacama exploration.",
+    "description": "Lodge de lujo todo incluido con guía privado y vehículo 4x4 para exploraciones personalizadas del desierto más árido del mundo.",
     "rooms": 8,
     "checkIn": "14:00",
-    "checkOut": "12:00"
+    "checkOut": "12:00",
+    "nearbyAttractions": ["Valle de la Luna", "Geysers del Tatio", "Salar de Atacama"]
   },
   {
     "id": "tierra-patagonia",
     "name": "Tierra Patagonia",
     "region": "Torres del Paine",
     "location": "Torres del Paine National Park",
-    "nightlyRate": 1450,
+    "nightlyRate": 1500,
     "currency": "USD",
     "rating": 5,
     "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop&crop=center&q=80",
-    "amenities": ["spa", "restaurant", "wifi", "fitness", "library", "excursions", "uma-bar"],
+    "amenities": ["spa", "restaurant", "wifi", "fitness", "library", "excursions", "uma-bar", "horseback-riding"],
     "availableDates": {
-      "start": "2025-02-15",
-      "end": "2025-11-15"
+      "start": "2024-09-01",
+      "end": "2025-04-30"
     },
-    "description": "Striking eco-luxury hotel blending seamlessly with the Patagonian steppe landscape.",
+    "description": "Hotel ecolujo integrado al paisaje patagónico, con excursiones guiadas y vistas panorámicas al macizo Paine.",
     "rooms": 40,
     "checkIn": "15:00",
-    "checkOut": "12:00"
+    "checkOut": "12:00",
+    "nearbyAttractions": ["Torres del Paine", "Lago Grey", "Glaciar Grey"]
   },
   {
     "id": "refugia-chiloe",
     "name": "Refugia Chiloé",
     "region": "Chiloé",
-    "location": "Chiloé Island",
-    "nightlyRate": 680,
+    "location": "Isla de Chiloé",
+    "nightlyRate": 700,
     "currency": "USD",
-    "rating": 4,
-    "image": "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&h=600&fit=crop&crop=center&q=80",
-    "amenities": ["restaurant", "wifi", "spa", "kayaking", "bird-watching", "local-culture"],
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1506744038136-46273869b3fb?w=800&h=600&fit=crop&crop=center&q=80",
+    "amenities": ["restaurant", "wifi", "spa", "kayaking", "bird-watching", "local-culture", "boat-tours"],
     "availableDates": {
-      "start": "2025-01-20",
-      "end": "2025-12-10"
+      "start": "2024-10-01",
+      "end": "2025-03-31"
     },
-    "description": "Contemporary lodge celebrating Chiloé's unique culture and pristine natural environment.",
+    "description": "Lodge contemporáneo que celebra la cultura chilota, con actividades en la isla mística de Chiloé.",
     "rooms": 12,
     "checkIn": "14:00",
-    "checkOut": "11:00"
+    "checkOut": "11:00",
+    "nearbyAttractions": ["Parque Nacional Chiloé", "Iglesias de Chiloé", "Pingüineras de Puñihuil"]
   },
   {
     "id": "hotel-awa",
     "name": "Hotel AWA",
-    "region": "Valparaíso",
+    "region": "Los Lagos",
     "location": "Puerto Varas, Lake District",
-    "nightlyRate": 340,
+    "nightlyRate": 350,
     "currency": "USD",
-    "rating": 4,
-    "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop&crop=center&q=80",
-    "amenities": ["restaurant", "wifi", "spa", "lake-activities", "volcano-views", "fitness"],
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1519682339158-e220aa3a668e?w=800&h=600&fit=crop&crop=center&q=80",
+    "amenities": ["restaurant", "wifi", "spa", "lake-activities", "volcano-views", "fitness", "kayaking"],
     "availableDates": {
-      "start": "2025-01-05",
-      "end": "2025-12-25"
+      "start": "2024-09-15",
+      "end": "2025-04-15"
     },
-    "description": "Design hotel on the shores of Lake Llanquihue with stunning views of Osorno and Calbuco volcanoes.",
+    "description": "Hotel de diseño a orillas del Lago Llanquihue, con vistas impresionantes a los volcanes Osorno y Calbuco.",
     "rooms": 16,
     "checkIn": "15:00",
-    "checkOut": "12:00"
+    "checkOut": "12:00",
+    "nearbyAttractions": ["Volcán Osorno", "Saltos del Petrohué", "Lago Todos los Santos"]
   }
 ] 

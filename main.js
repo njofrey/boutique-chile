@@ -1,5 +1,5 @@
 /**
- * Boutique Chile - Hotel Finder Application
+ * Boutique Me - Hotel Finder Application
  * Vanilla ES6 JavaScript with debounced filtering, lazy loading, and accessibility
  */
 
@@ -39,10 +39,11 @@ class HotelFinder {
             this.setupEventListeners();
             this.populateRegionFilter();
             this.populateAmenitiesFilter();
+            this.renderDestinosPopulares();
             this.renderHotels();
         } catch (error) {
             console.error('Failed to initialize hotel finder:', error);
-            this.showError('Failed to load hotels. Please refresh the page.');
+            this.showError('Error al cargar hoteles. Por favor recarga la página.');
         }
     }
 
@@ -58,6 +59,7 @@ class HotelFinder {
             amenitiesContainer: document.getElementById('amenities-container'),
             resultsCount: document.getElementById('results-count'),
             hotelsGrid: document.getElementById('hotels-grid'),
+            destinosGrid: document.getElementById('destinos-grid'),
             loading: document.getElementById('loading'),
             emptyState: document.getElementById('empty-state')
         };
@@ -237,10 +239,82 @@ class HotelFinder {
     }
 
     /**
+     * Render destinos populares section
+     */
+    renderDestinosPopulares() {
+        const destinos = [...new Set(this.hotels.map(h => h.region))].sort();
+        const grid = this.elements.destinosGrid;
+        const fragment = document.createDocumentFragment();
+
+        destinos.forEach(region => {
+            const card = document.createElement('div');
+            card.className = 'destino-card';
+            card.tabIndex = 0;
+            
+            const regionHotels = this.hotels.filter(h => h.region === region);
+            const sampleImage = regionHotels[0]?.image || 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&h=600&fit=crop&crop=center&q=80';
+            
+            card.innerHTML = `
+                <img src="${sampleImage}" alt="Vista de ${region}" loading="lazy">
+                <h3>${this.escapeHtml(region)}</h3>
+                <p>${regionHotels.length} hoteles boutique</p>
+            `;
+            
+            card.addEventListener('click', () => {
+                this.elements.regionSelect.value = region;
+                this.filters.region = region;
+                this.applyFilters();
+            });
+            
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
+            
+            fragment.appendChild(card);
+        });
+
+        grid.appendChild(fragment);
+    }
+
+    /**
      * Format amenity names for display
      */
     formatAmenityName(amenity) {
-        return amenity
+        const translations = {
+            'spa': 'Spa',
+            'restaurant': 'Restaurante',
+            'wifi': 'WiFi',
+            'pool': 'Piscina',
+            'fitness': 'Gimnasio',
+            'concierge': 'Concierge',
+            'room-service': 'Servicio a la habitación',
+            'excursions': 'Excursiones',
+            'hiking': 'Senderismo',
+            'wildlife-watching': 'Observación de fauna',
+            'eco-tours': 'Ecoturismo',
+            'hot-springs': 'Termas',
+            'wine-tasting': 'Cata de vinos',
+            'art-gallery': 'Galería de arte',
+            'vineyard-tours': 'Tours de viñedos',
+            'private-guide': 'Guía privado',
+            '4wd-vehicle': 'Vehículo 4x4',
+            'observatory': 'Observatorio',
+            'astronomy-tours': 'Tours astronómicos',
+            'library': 'Biblioteca',
+            'uma-bar': 'Bar Uma',
+            'horseback-riding': 'Cabalgatas',
+            'kayaking': 'Kayak',
+            'bird-watching': 'Observación de aves',
+            'local-culture': 'Cultura local',
+            'boat-tours': 'Tours en bote',
+            'lake-activities': 'Actividades lacustres',
+            'volcano-views': 'Vistas a volcanes'
+        };
+        
+        return translations[amenity] || amenity
             .split('-')
             .map(word => word.charAt(0).toUpperCase() + word.slice(1))
             .join(' ');
@@ -251,13 +325,14 @@ class HotelFinder {
      */
     applyFilters() {
         this.filteredHotels = this.hotels.filter(hotel => {
-            // Search filter (name, location, description)
+            // Search filter (name, location, description, attractions)
             if (this.filters.search) {
                 const searchTerms = [
                     hotel.name.toLowerCase(),
                     hotel.location.toLowerCase(),
                     hotel.region.toLowerCase(),
-                    hotel.description.toLowerCase()
+                    hotel.description.toLowerCase(),
+                    ...(hotel.nearbyAttractions || []).map(attr => attr.toLowerCase())
                 ].join(' ');
                 
                 if (!searchTerms.includes(this.filters.search)) {
@@ -300,10 +375,10 @@ class HotelFinder {
         
         // Update results count
         const countText = count === 0 
-            ? 'No hotels found' 
+            ? 'No se encontraron hoteles' 
             : count === 1 
-                ? '1 hotel found' 
-                : `${count} hotels found`;
+                ? '1 hotel encontrado' 
+                : `${count} hoteles encontrados`;
         this.elements.resultsCount.textContent = countText;
 
         // Show/hide empty state
@@ -342,8 +417,8 @@ class HotelFinder {
         card.tabIndex = 0;
 
         // Generate star rating for accessibility
-        const stars = '★'.repeat(hotel.rating) + '☆'.repeat(5 - hotel.rating);
-        const ratingText = `${hotel.rating} out of 5 stars`;
+        const stars = '★'.repeat(Math.floor(hotel.rating)) + '☆'.repeat(5 - Math.floor(hotel.rating));
+        const ratingText = `${hotel.rating} de 5 estrellas`;
 
         card.innerHTML = `
             <div class="hotel-image">
@@ -363,23 +438,31 @@ class HotelFinder {
             <div class="hotel-content">
                 <h3 id="hotel-name-${hotel.id}" class="hotel-name">${this.escapeHtml(hotel.name)}</h3>
                 <p class="hotel-location">
-                    <span aria-label="Location">📍</span>
+                    <span aria-label="Ubicación">📍</span>
                     ${this.escapeHtml(hotel.location)}
                 </p>
                 <p class="hotel-description">${this.escapeHtml(hotel.description)}</p>
-                <div class="hotel-amenities" role="list" aria-label="Hotel amenities">
+                <div class="hotel-amenities" role="list" aria-label="Amenidades del hotel">
                     ${hotel.amenities.slice(0, 5).map(amenity => 
                         `<span class="amenity-tag" role="listitem">${this.escapeHtml(this.formatAmenityName(amenity))}</span>`
                     ).join('')}
-                    ${hotel.amenities.length > 5 ? `<span class="amenity-tag">+${hotel.amenities.length - 5} more</span>` : ''}
+                    ${hotel.amenities.length > 5 ? `<span class="amenity-tag">+${hotel.amenities.length - 5} más</span>` : ''}
                 </div>
+                ${hotel.nearbyAttractions ? `
+                <div class="hotel-attractions">
+                    <h4>Lugares fantásticos cerca:</h4>
+                    <ul>
+                        ${hotel.nearbyAttractions.map(attr => `<li>${this.escapeHtml(attr)}</li>`).join('')}
+                    </ul>
+                </div>
+                ` : ''}
                 <div class="hotel-footer">
                     <div class="hotel-price">
                         $${hotel.nightlyRate.toLocaleString()}
-                        <span class="hotel-price-label">per night</span>
+                        <span class="hotel-price-label">por noche</span>
                     </div>
-                    <div class="hotel-rooms" aria-label="Number of rooms">
-                        ${hotel.rooms} rooms
+                    <div class="hotel-rooms" aria-label="Número de habitaciones">
+                        ${hotel.rooms} habitaciones
                     </div>
                 </div>
             </div>
@@ -423,7 +506,7 @@ class HotelFinder {
         };
         tempImg.onerror = () => {
             // Fallback to a placeholder or default image
-            img.alt = `${img.alt} (Image not available)`;
+            img.alt = `${img.alt} (Imagen no disponible)`;
             img.style.backgroundColor = '#f0f2f5';
         };
         tempImg.src = img.dataset.src;
@@ -433,8 +516,10 @@ class HotelFinder {
      * Handle hotel selection (placeholder for future functionality)
      */
     handleHotelSelection(hotel) {
-        console.log('Selected hotel:', hotel.name);
+        console.log('Hotel seleccionado:', hotel.name);
         // Could implement modal, navigation, or booking functionality
+        // For now, could open booking.com or similar
+        // window.open(`https://www.booking.com/search.html?ss=${encodeURIComponent(hotel.name + ' ' + hotel.location)}`, '_blank');
     }
 
     /**
@@ -477,10 +562,10 @@ class HotelFinder {
      */
     announceResults(count) {
         const announcement = count === 0 
-            ? 'No hotels match your current filters' 
+            ? 'No hay hoteles que coincidan con tus filtros actuales' 
             : count === 1 
-                ? 'Found 1 hotel matching your filters' 
-                : `Found ${count} hotels matching your filters`;
+                ? 'Se encontró 1 hotel que coincide con tus filtros' 
+                : `Se encontraron ${count} hoteles que coinciden con tus filtros`;
         
         // Create temporary element for screen reader announcement
         const announcer = document.createElement('div');
@@ -545,7 +630,7 @@ class PerformanceMonitor {
             const navigationTiming = performance.getEntriesByType('navigation')[0];
             const loadTime = navigationTiming.loadEventEnd - navigationTiming.loadEventStart;
             
-            console.log(`Page load time: ${loadTime}ms`);
+            console.log(`Tiempo de carga de página: ${loadTime}ms`);
             
             // Monitor for Web Vitals if needed
             if ('PerformanceObserver' in window) {
@@ -568,7 +653,7 @@ class PerformanceMonitor {
         const start = performance.now();
         callback();
         const end = performance.now();
-        console.log(`Filter operation took ${end - start} milliseconds`);
+        console.log(`Operación de filtrado tomó ${end - start} milisegundos`);
     }
 }
 
@@ -590,8 +675,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add service worker registration for PWA capabilities (optional)
     if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
         navigator.serviceWorker.register('/sw.js')
-            .then(registration => console.log('SW registered:', registration))
-            .catch(error => console.log('SW registration failed:', error));
+            .then(registration => console.log('SW registrado:', registration))
+            .catch(error => console.log('Registro de SW falló:', error));
     }
 });
 
