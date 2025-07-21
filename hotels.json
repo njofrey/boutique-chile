@@ -1,0 +1,135 @@
+[
+  {
+    "id": "the-singular",
+    "name": "The Singular Patagonia",
+    "region": "Torres del Paine",
+    "location": "Puerto Natales, Patagonia",
+    "nightlyRate": 890,
+    "currency": "USD",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop&crop=center&q=80",
+    "amenities": ["spa", "restaurant", "wifi", "pool", "fitness", "concierge", "room-service"],
+    "availableDates": {
+      "start": "2025-01-15",
+      "end": "2025-12-20"
+    },
+    "description": "Luxury eco-hotel overlooking the Última Esperanza fjord with panoramic views of the Patagonian landscape.",
+    "rooms": 57,
+    "checkIn": "15:00",
+    "checkOut": "12:00"
+  },
+  {
+    "id": "huilo-huilo",
+    "name": "Huilo Huilo Montaña Mágica Lodge",
+    "region": "Los Ríos",
+    "location": "Neltume, Valdivian Rainforest",
+    "nightlyRate": 420,
+    "currency": "USD",
+    "rating": 4,
+    "image": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&h=600&fit=crop&crop=center&q=80",
+    "amenities": ["restaurant", "wifi", "spa", "hiking", "wildlife-watching", "eco-tours"],
+    "availableDates": {
+      "start": "2025-02-01",
+      "end": "2025-11-30"
+    },
+    "description": "Unique cone-shaped lodge in the heart of an ancient Valdivian rainforest biological reserve.",
+    "rooms": 12,
+    "checkIn": "14:00",
+    "checkOut": "11:00"
+  },
+  {
+    "id": "vik-chile",
+    "name": "Vik Chile",
+    "region": "Colchagua Valley",
+    "location": "Millahue, Wine Region",
+    "nightlyRate": 1200,
+    "currency": "USD",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&h=600&fit=crop&crop=center&q=80",
+    "amenities": ["wine-tasting", "spa", "restaurant", "wifi", "pool", "art-gallery", "fitness"],
+    "availableDates": {
+      "start": "2025-01-10",
+      "end": "2025-12-15"
+    },
+    "description": "Ultra-luxury wine hotel featuring contemporary art and world-class vineyard in the Andes foothills.",
+    "rooms": 22,
+    "checkIn": "15:00",
+    "checkOut": "12:00"
+  },
+  {
+    "id": "awasi-atacama",
+    "name": "Awasi Atacama",
+    "region": "Atacama Desert",
+    "location": "San Pedro de Atacama",
+    "nightlyRate": 2100,
+    "currency": "USD",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop&crop=center&q=80",
+    "amenities": ["private-guide", "4wd-vehicle", "spa", "restaurant", "wifi", "observatory", "pool"],
+    "availableDates": {
+      "start": "2025-03-01",
+      "end": "2025-10-31"
+    },
+    "description": "All-inclusive luxury desert lodge with private guide and vehicle for personalized Atacama exploration.",
+    "rooms": 8,
+    "checkIn": "14:00",
+    "checkOut": "12:00"
+  },
+  {
+    "id": "tierra-patagonia",
+    "name": "Tierra Patagonia",
+    "region": "Torres del Paine",
+    "location": "Torres del Paine National Park",
+    "nightlyRate": 1450,
+    "currency": "USD",
+    "rating": 5,
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop&crop=center&q=80",
+    "amenities": ["spa", "restaurant", "wifi", "fitness", "library", "excursions", "uma-bar"],
+    "availableDates": {
+      "start": "2025-02-15",
+      "end": "2025-11-15"
+    },
+    "description": "Striking eco-luxury hotel blending seamlessly with the Patagonian steppe landscape.",
+    "rooms": 40,
+    "checkIn": "15:00",
+    "checkOut": "12:00"
+  },
+  {
+    "id": "refugia-chiloe",
+    "name": "Refugia Chiloé",
+    "region": "Chiloé",
+    "location": "Chiloé Island",
+    "nightlyRate": 680,
+    "currency": "USD",
+    "rating": 4,
+    "image": "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&h=600&fit=crop&crop=center&q=80",
+    "amenities": ["restaurant", "wifi", "spa", "kayaking", "bird-watching", "local-culture"],
+    "availableDates": {
+      "start": "2025-01-20",
+      "end": "2025-12-10"
+    },
+    "description": "Contemporary lodge celebrating Chiloé's unique culture and pristine natural environment.",
+    "rooms": 12,
+    "checkIn": "14:00",
+    "checkOut": "11:00"
+  },
+  {
+    "id": "hotel-awa",
+    "name": "Hotel AWA",
+    "region": "Valparaíso",
+    "location": "Puerto Varas, Lake District",
+    "nightlyRate": 340,
+    "currency": "USD",
+    "rating": 4,
+    "image": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop&crop=center&q=80",
+    "amenities": ["restaurant", "wifi", "spa", "lake-activities", "volcano-views", "fitness"],
+    "availableDates": {
+      "start": "2025-01-05",
+      "end": "2025-12-25"
+    },
+    "description": "Design hotel on the shores of Lake Llanquihue with stunning views of Osorno and Calbuco volcanoes.",
+    "rooms": 16,
+    "checkIn": "15:00",
+    "checkOut": "12:00"
+  }
+] 

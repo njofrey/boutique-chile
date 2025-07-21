@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover luxury boutique hotels and lodges across Chile. From Patagonia to Atacama, find unique accommodations in Chile's most stunning destinations.">
+    <meta name="keywords" content="boutique hotels chile, luxury lodges patagonia, atacama desert hotels, chile accommodation, eco hotels">
+    <meta name="author" content="Boutique Chile">
+    <meta property="og:title" content="Boutique Chile - Luxury Hotels & Lodges">
+    <meta property="og:description" content="Discover luxury boutique hotels and lodges across Chile. From Patagonia to Atacama Desert.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://boutique-chile.com">
+    <title>Boutique Chile - Luxury Hotels & Lodges</title>
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/space-grotesk-medium.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "name": "Boutique Chile",
+        "description": "Luxury boutique hotels and lodges in Chile",
+        "url": "https://boutique-chile.com",
+        "sameAs": [],
+        "areaServed": {
+            "@type": "Country",
+            "name": "Chile"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <h1 class="logo">
+                <span class="logo-text">Boutique</span>
+                <span class="logo-accent">Chile</span>
+            </h1>
+            <p class="tagline">Discover luxury in Chile's most stunning destinations</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main" role="main">
+        <div class="container">
+            <!-- Filters Section -->
+            <section class="filters" role="search" aria-label="Hotel filters">
+                <h2 class="visually-hidden">Search and Filter Hotels</h2>
+                
+                <div class="filters-grid">
+                    <!-- Search Input -->
+                    <div class="filter-group">
+                        <label for="search-input" class="filter-label">Search hotels</label>
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            class="filter-input" 
+                            placeholder="Search by name or location..."
+                            aria-describedby="search-help"
+                        >
+                        <div id="search-help" class="visually-hidden">Search hotels by name or location</div>
+                    </div>
+
+                    <!-- Region Filter -->
+                    <div class="filter-group">
+                        <label for="region-select" class="filter-label">Region</label>
+                        <select id="region-select" class="filter-select" aria-describedby="region-help">
+                            <option value="">All regions</option>
+                        </select>
+                        <div id="region-help" class="visually-hidden">Filter hotels by region</div>
+                    </div>
+
+                    <!-- Price Range Filter -->
+                    <div class="filter-group">
+                        <label for="price-range" class="filter-label">Max nightly rate</label>
+                        <input 
+                            type="range" 
+                            id="price-range" 
+                            class="filter-range" 
+                            min="0" 
+                            max="2500" 
+                            value="2500"
+                            aria-describedby="price-help"
+                        >
+                        <div class="price-display">
+                            <span>$0</span>
+                            <span id="price-value">$2,500</span>
+                        </div>
+                        <div id="price-help" class="visually-hidden">Filter hotels by maximum nightly rate</div>
+                    </div>
+
+                    <!-- Amenities Filter -->
+                    <div class="filter-group filter-group--amenities">
+                        <fieldset>
+                            <legend class="filter-label">Amenities</legend>
+                            <div class="amenities-grid" id="amenities-container">
+                                <!-- Amenities will be populated by JavaScript -->
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <!-- Results Count -->
+                <div class="results-info" aria-live="polite">
+                    <span id="results-count">Loading hotels...</span>
+                </div>
+            </section>
+
+            <!-- Hotels Grid -->
+            <section class="hotels" aria-label="Hotel results">
+                <h2 class="visually-hidden">Available Hotels</h2>
+                <div id="hotels-grid" class="hotels-grid" role="list">
+                    <!-- Hotel cards will be populated by JavaScript -->
+                </div>
+
+                <!-- Loading State -->
+                <div id="loading" class="loading" aria-hidden="true">
+                    <div class="loading-spinner"></div>
+                    <p>Loading luxury hotels...</p>
+                </div>
+
+                <!-- Empty State -->
+                <div id="empty-state" class="empty-state" aria-hidden="true">
+                    <h3>No hotels found</h3>
+                    <p>Try adjusting your filters to see more results.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Boutique Chile</h3>
+                    <p>Curating exceptional luxury experiences across Chile's diverse landscapes.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>For bookings and inquiries:<br>
+                    <a href="mailto:hello@boutique-chile.com">hello@boutique-chile.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Boutique Chile. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+</body>
+</html> 

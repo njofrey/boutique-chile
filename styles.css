@@ -1,0 +1,698 @@
+/* ==========================================================================
+   Boutique Chile - Luxury Hotel Finder
+   Mobile-first responsive design with accessibility focus
+   ========================================================================== */
+
+/* Font Faces - Self-hosted WOFF2 fonts */
+@font-face {
+    font-family: 'Inter';
+    src: url('fonts/inter-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Space Grotesk';
+    src: url('fonts/space-grotesk-medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ==========================================================================
+   CSS Custom Properties (Design System)
+   ========================================================================== */
+
+:root {
+    /* Colors - Neutral palette with AA contrast */
+    --color-primary: #1a1a1a;
+    --color-secondary: #4a4a4a;
+    --color-accent: #B45309;
+    --color-accent-light: #d4661a;
+    --color-accent-dark: #8b3f06;
+    --color-background: #ffffff;
+    --color-background-alt: #f8f9fa;
+    --color-background-dark: #f1f2f4;
+    --color-text: #2c2c2c;
+    --color-text-light: #666666;
+    --color-text-muted: #888888;
+    --color-border: #e1e5e9;
+    --color-border-light: #f0f2f5;
+    
+    /* Typography */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    
+    /* Spacing scale */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    
+    /* Border radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    
+    /* Transitions */
+    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Container max-width */
+    --container-max-width: 1200px;
+    --container-padding: var(--space-md);
+}
+
+/* ==========================================================================
+   Reset and Base Styles
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    line-height: 1.6;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0 0 var(--space-lg) 0;
+    color: var(--color-primary);
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.875rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p {
+    margin: 0 0 var(--space-md) 0;
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-accent-dark);
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ==========================================================================
+   Accessibility & Utility Classes
+   ========================================================================== */
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--color-accent);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 1000;
+    border-radius: var(--radius-sm);
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* ==========================================================================
+   Layout Components
+   ========================================================================== */
+
+.container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.header {
+    background: var(--color-background);
+    border-bottom: 1px solid var(--color-border-light);
+    padding: var(--space-lg) 0;
+}
+
+.logo {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.logo-text {
+    color: var(--color-primary);
+}
+
+.logo-accent {
+    color: var(--color-accent);
+}
+
+.tagline {
+    margin: var(--space-sm) 0 0 0;
+    color: var(--color-text-light);
+    font-size: 1.125rem;
+}
+
+/* ==========================================================================
+   Main Content
+   ========================================================================== */
+
+.main {
+    padding: var(--space-2xl) 0;
+}
+
+/* ==========================================================================
+   Filters Section
+   ========================================================================== */
+
+.filters {
+    background: var(--color-background-alt);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.filters-grid {
+    display: grid;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-label {
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.filter-input,
+.filter-select {
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--color-background);
+    color: var(--color-text);
+    transition: border-color var(--transition-fast);
+}
+
+.filter-input:focus,
+.filter-select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.1);
+}
+
+.filter-range {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: var(--radius-sm);
+    background: var(--color-border-light);
+    outline: none;
+    margin: var(--space-sm) 0;
+}
+
+.filter-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.filter-range::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    cursor: pointer;
+    border: none;
+}
+
+.filter-range::-webkit-slider-thumb:hover {
+    background: var(--color-accent-dark);
+}
+
+.price-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+}
+
+#price-value {
+    font-weight: 500;
+    color: var(--color-accent);
+}
+
+/* Amenities Filter */
+.filter-group--amenities fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+}
+
+.amenity-checkbox {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-size: 0.875rem;
+}
+
+.amenity-checkbox:hover {
+    background: var(--color-background-dark);
+    border-color: var(--color-accent-light);
+}
+
+.amenity-checkbox input[type="checkbox"] {
+    margin: 0;
+}
+
+.amenity-checkbox input[type="checkbox"]:checked + .amenity-label {
+    color: var(--color-accent);
+    font-weight: 500;
+}
+
+.amenity-checkbox:has(input:checked) {
+    background: rgba(180, 83, 9, 0.05);
+    border-color: var(--color-accent);
+}
+
+/* Results Info */
+.results-info {
+    text-align: center;
+    padding: var(--space-md);
+    background: var(--color-background);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-light);
+}
+
+#results-count {
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+/* ==========================================================================
+   Hotels Grid
+   ========================================================================== */
+
+.hotels-grid {
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: 1fr;
+}
+
+/* Hotel Card */
+.hotel-card {
+    background: var(--color-background);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+    border: 1px solid var(--color-border-light);
+}
+
+.hotel-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.hotel-card:focus-within {
+    box-shadow: var(--shadow-lg);
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.hotel-image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.hotel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+}
+
+.hotel-card:hover .hotel-image img {
+    transform: scale(1.05);
+}
+
+.hotel-rating {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.hotel-content {
+    padding: var(--space-xl);
+}
+
+.hotel-name {
+    font-size: 1.25rem;
+    margin: 0 0 var(--space-sm) 0;
+    color: var(--color-primary);
+}
+
+.hotel-location {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    margin-bottom: var(--space-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.hotel-description {
+    color: var(--color-text);
+    margin-bottom: var(--space-lg);
+    line-height: 1.5;
+}
+
+.hotel-amenities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-lg);
+}
+
+.amenity-tag {
+    background: var(--color-background-alt);
+    color: var(--color-text-light);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    text-transform: capitalize;
+    border: 1px solid var(--color-border);
+}
+
+.hotel-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hotel-price {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--color-accent);
+}
+
+.hotel-price-label {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin-left: var(--space-xs);
+}
+
+.hotel-rooms {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   Loading and Empty States
+   ========================================================================== */
+
+.loading,
+.empty-state {
+    text-align: center;
+    padding: var(--space-3xl) var(--space-xl);
+    color: var(--color-text-light);
+}
+
+.loading[aria-hidden="false"],
+.empty-state[aria-hidden="false"] {
+    display: block;
+}
+
+.loading[aria-hidden="true"],
+.empty-state[aria-hidden="true"] {
+    display: none;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--color-border);
+    border-top: 4px solid var(--color-accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto var(--space-md);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+    background: var(--color-primary);
+    color: white;
+    padding: var(--space-2xl) 0 var(--space-xl);
+    margin-top: var(--space-3xl);
+}
+
+.footer-content {
+    display: grid;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+}
+
+.footer-section h3 {
+    color: white;
+    margin-bottom: var(--space-md);
+    font-size: 1.125rem;
+}
+
+.footer-section p {
+    color: #cccccc;
+    line-height: 1.6;
+}
+
+.footer-section a {
+    color: var(--color-accent-light);
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: var(--space-lg);
+    text-align: center;
+    color: #999;
+    font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   Responsive Design - Mobile First
+   ========================================================================== */
+
+/* Tablet: 768px and up */
+@media (min-width: 48em) {
+    :root {
+        --container-padding: var(--space-xl);
+    }
+    
+    .filters-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-xl);
+    }
+    
+    .filter-group--amenities {
+        grid-column: 1 / -1;
+    }
+    
+    .amenities-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+    
+    .hotels-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-2xl);
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-2xl);
+    }
+    
+    h1 { font-size: 2.5rem; }
+    .tagline { font-size: 1.25rem; }
+}
+
+/* Desktop: 1024px and up */
+@media (min-width: 64em) {
+    .filters-grid {
+        grid-template-columns: 2fr 1fr 1.5fr;
+    }
+    
+    .filter-group--amenities {
+        grid-column: 1 / -1;
+    }
+    
+    .hotels-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        text-align: left;
+    }
+}
+
+/* Large Desktop: 1200px and up */
+@media (min-width: 75em) {
+    .filters-grid {
+        grid-template-columns: 2fr 1fr 1.5fr 2fr;
+    }
+    
+    .filter-group--amenities {
+        grid-column: 1 / -1;
+    }
+}
+
+/* ==========================================================================
+   Focus and Interaction States
+   ========================================================================== */
+
+/* Enhanced focus styles for better accessibility */
+.hotel-card,
+.filter-input,
+.filter-select,
+.amenity-checkbox {
+    position: relative;
+}
+
+.hotel-card:focus,
+.filter-input:focus,
+.filter-select:focus,
+.amenity-checkbox:focus-within {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.3);
+}
+
+/* Hover effects for interactive elements */
+.filter-input:hover,
+.filter-select:hover {
+    border-color: var(--color-accent-light);
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+    .filters,
+    .footer {
+        display: none;
+    }
+    
+    .hotels-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hotel-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+} 
