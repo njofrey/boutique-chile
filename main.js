@@ -8,13 +8,9 @@ class HotelFinder {
         this.hotels = [];
         this.filteredHotels = [];
         this.filters = {
-            search: '',
             macroZone: '',
-            maxPrice: 1500,
         };
         
-        this.searchDebounceTimer = null;
-        this.elements = {};
         this.imageObserver = null;
         
         this.init();
@@ -36,13 +32,13 @@ class HotelFinder {
 
     cacheElements() {
         this.elements = {
-            searchInput: document.getElementById('search-input'),
-            priceRange: document.getElementById('price-range'),
-            priceValue: document.getElementById('price-value'),
             resultsCount: document.getElementById('results-count'),
             hotelsGrid: document.getElementById('hotels-grid'),
             macroZonasGrid: document.getElementById('macro-zonas-grid'),
-            emptyState: document.getElementById('empty-state')
+            emptyState: document.getElementById('empty-state'),
+            modal: document.getElementById('hotel-modal'),
+            modalBody: document.getElementById('modal-body'),
+            modalClose: document.getElementById('modal-close')
         };
     }
 
@@ -89,27 +85,27 @@ class HotelFinder {
     }
 
     setupEventListeners() {
-        this.elements.searchInput.addEventListener('input', (e) => {
-            clearTimeout(this.searchDebounceTimer);
-            this.searchDebounceTimer = setTimeout(() => {
-                this.filters.search = e.target.value.toLowerCase().trim();
-                this.applyFilters();
-            }, 300);
+        // Modal close
+        this.elements.modalClose.addEventListener('click', () => {
+            this.closeModal();
         });
-
-        this.elements.priceRange.addEventListener('input', (e) => {
-            const value = parseInt(e.target.value);
-            this.filters.maxPrice = value;
-            this.elements.priceValue.textContent = `$${value.toLocaleString()}`;
-            this.applyFilters();
+        
+        // Close modal on outside click
+        this.elements.modal.addEventListener('click', (e) => {
+            if (e.target === this.elements.modal) this.closeModal();
+        });
+        
+        // Close on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.elements.modal.getAttribute('aria-hidden') === 'false') {
+                this.closeModal();
+            }
         });
     }
 
     applyFilters() {
         this.filteredHotels = this.hotels.filter(hotel => 
-            (this.filters.macroZone ? hotel.macroZone === this.filters.macroZone : true) &&
-            (hotel.nightlyRate <= this.filters.maxPrice) &&
-            (this.filters.search ? hotel.name.toLowerCase().includes(this.filters.search) : true)
+            (this.filters.macroZone ? hotel.macroZone === this.filters.macroZone : true)
         );
         this.renderHotels();
     }
@@ -140,18 +136,16 @@ class HotelFinder {
         const card = document.createElement('article');
         card.className = 'hotel-card';
         card.setAttribute('aria-labelledby', `hotel-name-${hotel.id}`);
+        card.tabIndex = 0;
         
-        const stars = '★'.repeat(Math.round(hotel.rating)) + '☆'.repeat(5 - Math.round(hotel.rating));
-
         card.innerHTML = `
             <div class="hotel-image">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3C/svg%3E" data-src="${hotel.image}" alt="${this.escapeHtml(hotel.name)}" loading="lazy">
-                <div class="hotel-rating" aria-label="${hotel.rating} de 5 estrellas">${stars}</div>
             </div>
             <div class="hotel-content">
                 <h3 id="hotel-name-${hotel.id}" class="hotel-name">${this.escapeHtml(hotel.name)}</h3>
                 <p class="hotel-location">${this.escapeHtml(hotel.location)}</p>
-                <p class="hotel-description">${this.escapeHtml(hotel.description)}</p>
+                <p class="hotel-description">${this.escapeHtml(hotel.description).substring(0, 100)}...</p>
                 <div class="hotel-footer">
                     <div class="hotel-price">
                         $${hotel.nightlyRate.toLocaleString()}
@@ -168,7 +162,45 @@ class HotelFinder {
             this.loadImage(img);
         }
 
+        card.addEventListener('click', (e) => {
+            if (!e.target.closest('.cta-button')) {
+                this.openModal(hotel);
+            }
+        });
+
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.openModal(hotel);
+            }
+        });
+
         return card;
+    }
+
+    openModal(hotel) {
+        const stars = '★'.repeat(Math.round(hotel.rating)) + '☆'.repeat(5 - Math.round(hotel.rating));
+        
+        this.elements.modalBody.innerHTML = `
+            <h2>${this.escapeHtml(hotel.name)}</h2>
+            <img src="${hotel.image}" alt="${this.escapeHtml(hotel.name)}" style="width:100%; border-radius: var(--radius-md); margin-bottom: var(--space-md);">
+            <p><strong>Ubicación:</strong> ${this.escapeHtml(hotel.location)}</p>
+            <p>${this.escapeHtml(hotel.description)}</p>
+            <p><strong>Lugares fantásticos cerca:</strong></p>
+            <ul>
+                ${hotel.nearbyAttractions.map(attr => `<li>${this.escapeHtml(attr)}</li>`).join('')}
+            </ul>
+            <p><strong>Precio:</strong> $${hotel.nightlyRate.toLocaleString()} USD por noche</p>
+            <p><strong>Rating:</strong> ${stars} (${hotel.rating}/5)</p>
+            <a href="mailto:info@boutique-me.cl?subject=Consulta de disponibilidad: ${encodeURIComponent(hotel.name)}&body=Hola, quisiera consultar la disponibilidad para el hotel ${encodeURIComponent(hotel.name)}." class="cta-button">Consultar disponibilidad</a>
+        `;
+        
+        this.elements.modal.setAttribute('aria-hidden', 'false');
+        this.elements.modalClose.focus();
+    }
+
+    closeModal() {
+        this.elements.modal.setAttribute('aria-hidden', 'true');
     }
 
     loadImage(img) {

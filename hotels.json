@@ -29,7 +29,7 @@
     "nightlyRate": 450,
     "currency": "USD",
     "rating": 4.5,
-    "image": "https://images.unsplash.com/photo-1540979388789-281154c5d2f4?w=800&h=600&fit=crop&crop=center&q=80",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop&crop=center&q=80",
     "amenities": ["restaurant", "wifi", "spa", "hiking", "wildlife-watching", "eco-tours", "hot-springs"],
     "availableDates": {
       "start": "2024-10-01",

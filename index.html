@@ -60,49 +60,10 @@
                 </div>
             </section>
 
-            <!-- Filters Section -->
-            <section class="filters" role="search" aria-label="Filtros de hoteles">
-                <h2 class="visually-hidden">Buscar y Filtrar Hoteles</h2>
-                
-                <div class="filters-grid">
-                    <!-- Search Input -->
-                    <div class="filter-group">
-                        <label for="search-input" class="filter-label">Búsqueda libre</label>
-                        <input 
-                            type="text" 
-                            id="search-input" 
-                            class="filter-input" 
-                            placeholder="Nombre del hotel..."
-                            aria-describedby="search-help"
-                        >
-                        <div id="search-help" class="visually-hidden">Buscar por nombre del hotel</div>
-                    </div>
-
-                    <!-- Price Range Filter -->
-                    <div class="filter-group">
-                        <label for="price-range" class="filter-label">Rango de precio</label>
-                        <input 
-                            type="range" 
-                            id="price-range" 
-                            class="filter-range" 
-                            min="0" 
-                            max="1500" 
-                            value="1500"
-                            aria-describedby="price-help"
-                        >
-                        <div class="price-display">
-                            <span>$0</span>
-                            <span id="price-value">$1,500</span>
-                        </div>
-                        <div id="price-help" class="visually-hidden">Filtrar hoteles por precio máximo por noche</div>
-                    </div>
-                </div>
-
-                <!-- Results Count -->
-                <div class="results-info" aria-live="polite">
-                    <span id="results-count">Cargando hoteles...</span>
-                </div>
-            </section>
+            <!-- Results Count -->
+            <div class="results-info" aria-live="polite">
+                <span id="results-count">Cargando hoteles...</span>
+            </div>
 
             <!-- Hotels Grid -->
             <section class="hotels" aria-label="Resultados de hoteles">
@@ -119,6 +80,14 @@
             </section>
         </div>
     </main>
+
+    <!-- Modal for Hotel Details -->
+    <div id="hotel-modal" class="modal" aria-hidden="true">
+        <div class="modal-content">
+            <button id="modal-close" class="modal-close" aria-label="Cerrar modal">×</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer" role="contentinfo">
