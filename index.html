@@ -45,18 +45,18 @@
                 <span class="logo-text">Boutique</span>
                 <span class="logo-accent">Me</span>
             </h1>
-            <p class="tagline">Los mejores hoteles boutique en Chile, con lugares fantásticos cerca</p>
+            <p class="tagline">Los mejores hoteles boutique en Chile, agrupados por macro-zonas para tu viaje soñado.</p>
         </div>
     </header>
 
     <!-- Main Content -->
     <main id="main-content" class="main" role="main">
         <div class="container">
-            <!-- Destinos Populares -->
-            <section class="destinos-populares" aria-label="Destinos populares">
-                <h2>Destinos Populares en Chile</h2>
-                <div id="destinos-grid" class="destinos-grid">
-                    <!-- Populados por JS -->
+            <!-- Macro-Zonas Filter -->
+            <section class="macro-zonas" aria-label="Filtrar por macro-zona">
+                <h2>Explora por Zona</h2>
+                <div id="macro-zonas-grid" class="macro-zonas-grid">
+                    <!-- Populado por JS -->
                 </div>
             </section>
 
@@ -67,53 +67,34 @@
                 <div class="filters-grid">
                     <!-- Search Input -->
                     <div class="filter-group">
-                        <label for="search-input" class="filter-label">Buscar hoteles</label>
+                        <label for="search-input" class="filter-label">Búsqueda libre</label>
                         <input 
                             type="text" 
                             id="search-input" 
                             class="filter-input" 
-                            placeholder="Buscar por nombre, ubicación o atracción..."
+                            placeholder="Nombre del hotel..."
                             aria-describedby="search-help"
                         >
-                        <div id="search-help" class="visually-hidden">Buscar hoteles por nombre, ubicación o atracción</div>
-                    </div>
-
-                    <!-- Region Filter -->
-                    <div class="filter-group">
-                        <label for="region-select" class="filter-label">Región</label>
-                        <select id="region-select" class="filter-select" aria-describedby="region-help">
-                            <option value="">Todas las regiones</option>
-                        </select>
-                        <div id="region-help" class="visually-hidden">Filtrar hoteles por región</div>
+                        <div id="search-help" class="visually-hidden">Buscar por nombre del hotel</div>
                     </div>
 
                     <!-- Price Range Filter -->
                     <div class="filter-group">
-                        <label for="price-range" class="filter-label">Precio máximo por noche</label>
+                        <label for="price-range" class="filter-label">Rango de precio</label>
                         <input 
                             type="range" 
                             id="price-range" 
                             class="filter-range" 
                             min="0" 
-                            max="2500" 
-                            value="2500"
+                            max="1500" 
+                            value="1500"
                             aria-describedby="price-help"
                         >
                         <div class="price-display">
                             <span>$0</span>
-                            <span id="price-value">$2,500</span>
+                            <span id="price-value">$1,500</span>
                         </div>
                         <div id="price-help" class="visually-hidden">Filtrar hoteles por precio máximo por noche</div>
-                    </div>
-
-                    <!-- Amenities Filter -->
-                    <div class="filter-group filter-group--amenities">
-                        <fieldset>
-                            <legend class="filter-label">Amenidades</legend>
-                            <div class="amenities-grid" id="amenities-container">
-                                <!-- Amenities will be populated by JavaScript -->
-                            </div>
-                        </fieldset>
                     </div>
                 </div>
 
@@ -130,16 +111,10 @@
                     <!-- Hotel cards will be populated by JavaScript -->
                 </div>
 
-                <!-- Loading State -->
-                <div id="loading" class="loading" aria-hidden="true">
-                    <div class="loading-spinner"></div>
-                    <p>Cargando hoteles boutique...</p>
-                </div>
-
                 <!-- Empty State -->
                 <div id="empty-state" class="empty-state" aria-hidden="true">
                     <h3>No se encontraron hoteles</h3>
-                    <p>Intenta ajustar tus filtros para ver más resultados.</p>
+                    <p>Intenta ajustar tus filtros o selecciona otra zona para ver más resultados.</p>
                 </div>
             </section>
         </div>

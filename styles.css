@@ -189,6 +189,7 @@ img {
     background: var(--color-background);
     border-bottom: 1px solid var(--color-border-light);
     padding: var(--space-lg) 0;
+    text-align: center;
 }
 
 .logo {
@@ -209,6 +210,9 @@ img {
     margin: var(--space-sm) 0 0 0;
     color: var(--color-text-light);
     font-size: 1.125rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* ==========================================================================
@@ -220,59 +224,47 @@ img {
 }
 
 /* ==========================================================================
-   Destinos Populares Section
+   Macro-Zonas Section
    ========================================================================== */
 
-.destinos-populares {
+.macro-zonas {
     margin-bottom: var(--space-2xl);
 }
 
-.destinos-populares h2 {
+.macro-zonas h2 {
     text-align: center;
     margin-bottom: var(--space-xl);
     color: var(--color-primary);
 }
 
-.destinos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--space-lg);
+.macro-zonas-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-md);
 }
 
-.destino-card {
-    background: var(--color-background-alt);
+.zona-btn {
+    padding: var(--space-sm) var(--space-lg);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    padding: var(--space-md);
-    text-align: center;
-    transition: all var(--transition-normal);
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: 1rem;
     cursor: pointer;
-    border: 1px solid var(--color-border-light);
+    transition: all var(--transition-fast);
 }
 
-.destino-card:hover {
-    background: var(--color-background-dark);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+.zona-btn:hover {
+    background: var(--color-background-alt);
+    border-color: var(--color-accent);
 }
 
-.destino-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: var(--radius-sm);
-    margin-bottom: var(--space-sm);
-}
-
-.destino-card h3 {
-    font-size: 1.125rem;
-    margin-bottom: var(--space-xs);
-    color: var(--color-primary);
-}
-
-.destino-card p {
-    font-size: 0.875rem;
-    color: var(--color-text-light);
-    margin: 0;
+.zona-btn.active {
+    background: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
 }
 
 /* ==========================================================================
@@ -288,8 +280,8 @@ img {
 
 .filters-grid {
     display: grid;
-    gap: var(--space-lg);
-    margin-bottom: var(--space-lg);
+    gap: var(--space-xl);
+    align-items: end;
 }
 
 .filter-group {
@@ -306,8 +298,7 @@ img {
     letter-spacing: 0.05em;
 }
 
-.filter-input,
-.filter-select {
+.filter-input {
     padding: var(--space-md);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
@@ -318,8 +309,7 @@ img {
     transition: border-color var(--transition-fast);
 }
 
-.filter-input:focus,
-.filter-select:focus {
+.filter-input:focus {
     outline: none;
     border-color: var(--color-accent);
     box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.1);
@@ -371,51 +361,6 @@ img {
     color: var(--color-accent);
 }
 
-/* Amenities Filter */
-.filter-group--amenities fieldset {
-    border: none;
-    margin: 0;
-    padding: 0;
-}
-
-.amenities-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: var(--space-sm);
-    margin-top: var(--space-sm);
-}
-
-.amenity-checkbox {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    padding: var(--space-sm);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    font-size: 0.875rem;
-}
-
-.amenity-checkbox:hover {
-    background: var(--color-background-dark);
-    border-color: var(--color-accent-light);
-}
-
-.amenity-checkbox input[type="checkbox"] {
-    margin: 0;
-}
-
-.amenity-checkbox input[type="checkbox"]:checked + .amenity-label {
-    color: var(--color-accent);
-    font-weight: 500;
-}
-
-.amenity-checkbox:has(input:checked) {
-    background: rgba(180, 83, 9, 0.05);
-    border-color: var(--color-accent);
-}
-
 /* Results Info */
 .results-info {
     text-align: center;
@@ -448,6 +393,8 @@ img {
     box-shadow: var(--shadow-sm);
     transition: all var(--transition-normal);
     border: 1px solid var(--color-border-light);
+    display: flex;
+    flex-direction: column;
 }
 
 .hotel-card:hover {
@@ -495,6 +442,9 @@ img {
 
 .hotel-content {
     padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .hotel-name {
@@ -516,56 +466,7 @@ img {
     color: var(--color-text);
     margin-bottom: var(--space-lg);
     line-height: 1.5;
-}
-
-.hotel-amenities {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-    margin-bottom: var(--space-lg);
-}
-
-.amenity-tag {
-    background: var(--color-background-alt);
-    color: var(--color-text-light);
-    padding: var(--space-xs) var(--space-sm);
-    border-radius: var(--radius-sm);
-    font-size: 0.75rem;
-    text-transform: capitalize;
-    border: 1px solid var(--color-border);
-}
-
-/* Hotel Attractions (Lugares fantásticos cerca) */
-.hotel-attractions {
-    margin-top: var(--space-md);
-    padding-top: var(--space-md);
-    border-top: 1px solid var(--color-border-light);
-}
-
-.hotel-attractions h4 {
-    font-size: 0.875rem;
-    color: var(--color-text-light);
-    margin-bottom: var(--space-sm);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.hotel-attractions ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-}
-
-.hotel-attractions li {
-    background: var(--color-background-dark);
-    color: var(--color-text);
-    padding: var(--space-xs) var(--space-sm);
-    border-radius: var(--radius-sm);
-    font-size: 0.75rem;
-    border: 1px solid var(--color-border);
+    flex-grow: 1;
 }
 
 .hotel-footer {
@@ -573,6 +474,8 @@ img {
     justify-content: space-between;
     align-items: center;
     margin-top: var(--space-lg);
+    border-top: 1px solid var(--color-border-light);
+    padding-top: var(--space-lg);
 }
 
 .hotel-price {
@@ -584,12 +487,23 @@ img {
 .hotel-price-label {
     font-size: 0.875rem;
     color: var(--color-text-light);
-    margin-left: var(--space-xs);
+    display: block;
+    line-height: 1;
 }
 
-.hotel-rooms {
-    color: var(--color-text-light);
-    font-size: 0.875rem;
+.cta-button {
+    background: var(--color-accent);
+    color: white;
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.cta-button:hover {
+    background: var(--color-accent-dark);
+    text-decoration: none;
 }
 
 /* ==========================================================================
@@ -682,21 +596,8 @@ img {
         --container-padding: var(--space-xl);
     }
     
-    .destinos-grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    }
-    
     .filters-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-xl);
-    }
-    
-    .filter-group--amenities {
-        grid-column: 1 / -1;
-    }
-    
-    .amenities-grid {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        grid-template-columns: 2fr 1.5fr;
     }
     
     .hotels-grid {
@@ -715,18 +616,6 @@ img {
 
 /* Desktop: 1024px and up */
 @media (min-width: 64em) {
-    .destinos-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-    
-    .filters-grid {
-        grid-template-columns: 2fr 1fr 1.5fr;
-    }
-    
-    .filter-group--amenities {
-        grid-column: 1 / -1;
-    }
-    
     .hotels-grid {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -755,24 +644,21 @@ img {
 /* Enhanced focus styles for better accessibility */
 .hotel-card,
 .filter-input,
-.filter-select,
-.amenity-checkbox,
-.destino-card {
+.zona-btn,
+.cta-button {
     position: relative;
 }
 
 .hotel-card:focus,
 .filter-input:focus,
-.filter-select:focus,
-.amenity-checkbox:focus-within,
-.destino-card:focus {
+.zona-btn:focus,
+.cta-button:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.3);
 }
 
 /* Hover effects for interactive elements */
-.filter-input:hover,
-.filter-select:hover {
+.filter-input:hover {
     border-color: var(--color-accent-light);
 }
 
@@ -783,7 +669,7 @@ img {
 @media print {
     .filters,
     .footer,
-    .destinos-populares {
+    .macro-zonas {
         display: none;
     }
     
